@@ -23,3 +23,10 @@
 :3000 {
     reverse_proxy grafana:3000
 }
+
+:9436 {
+    basicauth /* {
+        {$ADMIN_USER} {$ADMIN_PASSWORD_HASH}
+    }
+    reverse_proxy mikrotik-exporter:9436
+}

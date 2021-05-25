@@ -114,6 +114,21 @@ services:
     labels:
       org.label-schema.group: "monitoring"
 
+  mikrotik-exporter:
+    image: nshttpd/mikrotik-exporter:1.0.12-DEVEL
+    container_name: mikrotik-exporter
+    volumes:
+      - './mikrotik-exporter:/config'
+    environment:
+      - CONFIG_FILE=/config/config.yml
+    expose:
+      - 9436
+    restart: unless-stopped
+    networks:
+      - monitor-net
+    labels:
+      org.label-schema.group: "monitoring"
+
   caddy:
     image: caddy:2.3.0
     container_name: caddy
@@ -122,6 +137,7 @@ services:
       - "9090:9090"
       - "9093:9093"
       - "9091:9091"
+      - "9436:9436"
     volumes:
       - ./caddy:/etc/caddy
     environment:
