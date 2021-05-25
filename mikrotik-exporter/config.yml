@@ -1,0 +1,23 @@
+devices:
+  - name: ros
+    srv:
+      record: _mikrotik._tcp.rossconsulting.cn
+      dns:
+        address: 192.168.1.1
+        port: 53
+    user: prometheus
+    password: SJTU-sx923
+
+features:
+  bgp: true
+  dhcp: true
+  dhcpl: true
+  firmware: true
+  health: true
+  routes: true
+  pools: true
+  optics: true
+  wlansta: true
+  wlanif: true
+  monitor: true
+  ipsec: true
